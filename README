@@ -1,0 +1,7 @@
+The problem is described here: http://puzzlenode.com/puzzles/11-hitting-rock-bottom
+
+Current solution also generates final state picture of the cave. 
+
+input.txt contains amount of water to pour in and cave formations.
+output.txt contains water depths for each column.
+flow.txt contains result picture.
