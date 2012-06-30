@@ -1,15 +1,20 @@
 class WaterSource
   def initialize(cave)
     @cave = cave
-    @row, @col = 1, 0
+    @row = 1
+    @col = 0
   end
 
   def position_to_the(direction)
     case direction
-      when :left    then [@row, @col - 1]
-      when :right   then [@row, @col + 1]
-      when :top     then [@row - 1, @col]
-      when :bottom  then [@row + 1, @col]
+      when :left
+        [@row, @col - 1]
+      when :right
+        [@row, @col + 1]
+      when :top
+        [@row - 1, @col]
+      when :bottom
+        [@row + 1, @col]
       else raise "Invalid direction."
     end
   end
@@ -26,8 +31,10 @@ class WaterSource
 
   def pour
     case Cave::AIR
-      when cell_to_the(:bottom) then move :bottom
-      when cell_to_the(:right) then move :right
+      when cell_to_the(:bottom)
+        move :bottom
+      when cell_to_the(:right)
+        move :right
       else
         move :left while cell_to_the(:left) == Cave::WATER
         move :top
@@ -45,7 +52,8 @@ class Cave
     @cave = options[:cave]
     @water_amount = options[:water_amount]
     @water_source = WaterSource.new @cave
-    @width, @height = @cave.first.length, @cave.length
+    @width = @cave.first.length
+    @height = @cave.length
   end
 
   def start_flow
